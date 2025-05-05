@@ -31,7 +31,7 @@
   <body>
     <div id="loading">載入中...請將攝影機對準 AR 卡片</div>
 
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; filterMinCF:0.0001; filterBeta: 0.001" embedded color-space="sRGB" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true">
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; uiLoading: no; uiError: no; uiScanning: no;">
       <a-assets>
         <img id="schedule-a" src="./schedules/schedule-a.png" />
         <img id="schedule-b" src="./schedules/schedule-b.png" />
