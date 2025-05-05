@@ -1,1 +1,63 @@
-abcdefg
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AR 行程表展示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- A-Frame + MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/aframe-mindar-image.prod.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        background: rgba(255,255,255,0.8);
+        padding: 10px 20px;
+        border-radius: 8px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">載入中...請將攝影機對準 AR 卡片</div>
+
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; filterMinCF:0.0001; filterBeta: 0.001" embedded color-space="sRGB" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true">
+      <a-assets>
+        <img id="schedule-a" src="./schedules/schedule-a.png" />
+        <img id="schedule-b" src="./schedules/schedule-b.png" />
+        <img id="schedule-c" src="./schedules/schedule-c.png" />
+        <img id="schedule-d" src="./schedules/schedule-d.png" />
+        <img id="schedule-e" src="./schedules/schedule-e.png" />
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- 5個 target：對應五個角色的行程表 -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-image src="#schedule-a" position="0 0 0" scale="1.8 1.2 1"></a-image>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-image src="#schedule-b" position="0 0 0" scale="1.8 1.2 1"></a-image>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 2">
+        <a-image src="#schedule-c" position="0 0 0" scale="1.8 1.2 1"></a-image>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 3">
+        <a-image src="#schedule-d" position="0 0 0" scale="1.8 1.2 1"></a-image>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 4">
+        <a-image src="#schedule-e" position="0 0 0" scale="1.8 1.2 1"></a-image>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
